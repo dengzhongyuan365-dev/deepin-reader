@@ -1,0 +1,571 @@
+version: '1.0'
+cases:
+- id: suite_annotation_edit_s1
+  name: 注释文本编辑框输入文本
+  module: annotation_edit
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Form_CentralDocPage
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 添加注释
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PTextEdit
+  - step_type: action
+    action: keyboard_type_text
+    text: test note
+  - step_type: action
+    action: keyboard_press
+    key: return
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PTextEdit
+- id: suite_ctx_doc_menu_s1
+  name: 右键文档区域菜单所有菜单项
+  module: ctx_doc_menu
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Form_CentralDocPage
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 搜索
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 后一页
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 前一页
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 最后一页
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 第一页
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 添加书签
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 添加注释
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 全屏
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 幻灯片放映
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 左旋转
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 右旋转
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 文档信息
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Form_CentralDocPage
+- id: suite_ctx_scale_menu_s1
+  name: 右键缩放区域菜单所有菜单项
+  module: ctx_scale_menu
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Form_CentralDocPage
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 双页显示
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 默认大小
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 适合页面
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 适应高度
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 适应宽度
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Form_CentralDocPage
+- id: suite_main_no_doc_s1
+  name: 主界面无文档打开选择文件按钮
+  module: main_no_doc
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_SelectFile
+  - step_type: action
+    action: file_dialog_cancel
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_SelectFile
+- id: suite_sidebar_bookmark_s1
+  name: 左侧栏书签视图添加书签和右键菜单
+  module: sidebar_bookmark
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_bookmark
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_BookmarkAdd
+  - step_type: action
+    action: mouse_right_click
+    selector:
+      accessible_id: PImageListView
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PImageListView
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_BookmarkAdd
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PBookMarkMenu
+- id: suite_sidebar_catalog_s1
+  name: 左侧栏目录视图目录树显示和点击跳转
+  module: sidebar_catalog
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_catalog
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PTree
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PTree
+- id: suite_sidebar_notes_s1
+  name: 左侧栏注释视图添加注释和右键菜单
+  module: sidebar_notes
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 添加注释
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_annotation
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_NotesAdd
+  - step_type: action
+    action: mouse_right_click
+    selector:
+      accessible_id: PImageListView_2
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_2
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_NotesAdd
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PNoteMenu
+- id: suite_sidebar_tabs_s1
+  name: 左侧栏按钮切换缩略图目录书签注释搜索
+  module: sidebar_tabs
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_thumbnail
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_catalog
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_bookmark
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_annotation
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_search
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: Thumbnails
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_thumbnail
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_catalog
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_bookmark
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_annotation
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_search
+- id: suite_sidebar_thumbnails_s1
+  name: 左侧栏缩略图视图分页导航
+  module: sidebar_thumbnails
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_thumbnail
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PImageListView_4
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: pageEdit
+  - step_type: action
+    action: keyboard_type_text
+    text: '1'
+  - step_type: action
+    action: keyboard_press
+    key: return
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: thumbnailPreBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: thumbnailNextBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_4
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: pageEdit
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: thumbnailPreBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: thumbnailNextBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Label_TotalPage
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: CurrentPage
+- id: suite_slideshow_s1
+  name: 幻灯片放映播放上一页下一页
+  module: slideshow
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Form_CentralDocPage
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 幻灯片放映
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PlayBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PreBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: NextBtn
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PlayBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PreBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: NextBtn
+- id: suite_tab_bar_s1
+  name: 顶部标签页栏新建标签页按钮
+  module: tab_bar
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DTabBarAddButton
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: DTabBarAddButton
+- id: suite_titlebar_menu_s1
+  name: 标题栏主菜单工具搜索导航
+  module: titlebar_menu
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 工具
+    - 选择工具
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 工具
+    - 手形工具
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 搜索
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Form_CentralDocPage
+- id: suite_titlebar_scale_s1
+  name: 标题栏缩放比例输入和箭头按钮
+  module: titlebar_scale
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: scaleEdit_P
+  - step_type: action
+    action: keyboard_type_text
+    text: '100'
+  - step_type: action
+    action: keyboard_press
+    key: return
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: editArrowBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: scaleEdit_P
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: editArrowBtn
+- id: suite_titlebar_search_s1
+  name: 标题栏搜索框输入搜索清除和搜索结果导航
+  module: titlebar_search
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 搜索
+  - step_type: action
+    action: keyboard_type_text
+    text: test
+  - step_type: action
+    action: keyboard_press
+    key: return
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DLineEditChildLineEdit
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DSearchEditIconButton
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: SP_ArrowDownBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: SP_ArrowUpBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DLineEditClearButton
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: DLineEditChildLineEdit
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: DLineEditClearButton
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: DSearchEditIconButton
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: findSearchEdit_P
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: SP_ArrowUpBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: SP_ArrowDownBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_3
+- id: suite_titlebar_theme_s1
+  name: 标题栏主题菜单浅色深色跟随系统切换
+  module: titlebar_theme
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 主题
+    - 浅色
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 主题
+    - 深色
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 主题
+    - 跟随系统
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_SelectFile

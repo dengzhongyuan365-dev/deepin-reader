@@ -1,0 +1,21 @@
+scan_total: 38
+transient_items:
+- name: 浅色
+  role: menuitem
+  ui_name: 浅色主题
+  locator: name
+- name: 深色
+  role: menuitem
+  ui_name: 深色主题
+  locator: name
+- name: 跟随系统
+  role: menuitem
+  ui_name: 跟随系统主题
+  locator: name
+unreachable: 4
+denominator: 34
+covered: 34
+uncovered: 0
+coverage: 100.0
+passed: true
+uncovered_elements: []

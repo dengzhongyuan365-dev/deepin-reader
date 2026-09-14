@@ -1,0 +1,31 @@
+name: sidebar_catalog_suite
+app: deepin-reader
+module: sidebar_catalog
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_sidebar_catalog_s1
+  name: 左侧栏目录视图目录树显示和点击跳转
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_catalog
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PTree
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PTree
+teardown:
+- action: session_stop

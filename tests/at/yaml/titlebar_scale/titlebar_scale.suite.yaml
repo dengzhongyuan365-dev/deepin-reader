@@ -1,0 +1,37 @@
+name: titlebar_scale_suite
+app: deepin-reader
+module: titlebar_scale
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_titlebar_scale_s1
+  name: 标题栏缩放比例输入和箭头按钮
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: scaleEdit_P
+  - step_type: action
+    action: keyboard_type_text
+    text: '100'
+  - step_type: action
+    action: keyboard_press
+    key: return
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: editArrowBtn
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: scaleEdit_P
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: editArrowBtn
+teardown:
+- action: session_stop

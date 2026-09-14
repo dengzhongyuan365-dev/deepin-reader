@@ -1,0 +1,52 @@
+name: slideshow_suite
+app: deepin-reader
+module: slideshow
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_slideshow_s1
+  name: 幻灯片放映播放上一页下一页
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Form_CentralDocPage
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 幻灯片放映
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PlayBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PreBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: NextBtn
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PlayBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PreBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: NextBtn
+teardown:
+- action: session_stop

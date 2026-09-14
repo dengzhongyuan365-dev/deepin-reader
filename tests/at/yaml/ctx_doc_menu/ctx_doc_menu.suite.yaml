@@ -1,0 +1,107 @@
+name: ctx_doc_menu_suite
+app: deepin-reader
+module: ctx_doc_menu
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_ctx_doc_menu_s1
+  name: 右键文档区域菜单所有菜单项
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Form_CentralDocPage
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 搜索
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 后一页
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 前一页
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 最后一页
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 第一页
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 添加书签
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 添加注释
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 全屏
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 幻灯片放映
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 左旋转
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 右旋转
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 文档信息
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Form_CentralDocPage
+teardown:
+- action: session_stop

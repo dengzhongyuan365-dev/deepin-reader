@@ -1,0 +1,39 @@
+name: annotation_edit_suite
+app: deepin-reader
+module: annotation_edit
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_annotation_edit_s1
+  name: 注释文本编辑框输入文本
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Form_CentralDocPage
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 添加注释
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PTextEdit
+  - step_type: action
+    action: keyboard_type_text
+    text: test note
+  - step_type: action
+    action: keyboard_press
+    key: return
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PTextEdit
+teardown:
+- action: session_stop

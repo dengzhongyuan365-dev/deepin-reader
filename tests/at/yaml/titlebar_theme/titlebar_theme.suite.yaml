@@ -1,0 +1,34 @@
+name: titlebar_theme_suite
+app: deepin-reader
+module: titlebar_theme
+setup:
+- action: session_start
+  command: deepin-reader
+  wait: 3.0
+suites:
+- id: suite_titlebar_theme_s1
+  name: 标题栏主题菜单浅色深色跟随系统切换
+  description: ''
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 主题
+    - 浅色
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 主题
+    - 深色
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 主题
+    - 跟随系统
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_SelectFile
+teardown:
+- action: session_stop

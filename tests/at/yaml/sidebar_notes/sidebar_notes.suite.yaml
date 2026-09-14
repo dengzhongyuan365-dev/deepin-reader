@@ -1,0 +1,49 @@
+name: sidebar_notes_suite
+app: deepin-reader
+module: sidebar_notes
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_sidebar_notes_s1
+  name: 左侧栏注释视图添加注释和右键菜单
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_CentralDocPage
+    items:
+    - 添加注释
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_annotation
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_NotesAdd
+  - step_type: action
+    action: mouse_right_click
+    selector:
+      accessible_id: PImageListView_2
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_2
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_NotesAdd
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PNoteMenu
+teardown:
+- action: session_stop

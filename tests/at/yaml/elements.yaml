@@ -1,0 +1,89 @@
+elements:
+  Form_CentralDocPage:
+    name: Form_CentralDocPage
+  PTextEdit:
+    accessible_id: PTextEdit
+  Form_scaleEdit_P:
+    name: Form_scaleEdit_P
+  Button_SelectFile:
+    name: Button_SelectFile
+  Thumbnails:
+    accessible_id: Thumbnails
+  Button_bookmark:
+    name: Button_bookmark
+  Button_BookmarkAdd:
+    name: Button_BookmarkAdd
+  PImageListView:
+    accessible_id: PImageListView
+  PBookMarkMenu:
+    accessible_id: PBookMarkMenu
+  Button_catalog:
+    name: Button_catalog
+  PTree:
+    accessible_id: PTree
+  Button_annotation:
+    name: Button_annotation
+  Button_NotesAdd:
+    name: Button_NotesAdd
+  PImageListView_2:
+    accessible_id: PImageListView_2
+  PNoteMenu:
+    accessible_id: PNoteMenu
+  Button_thumbnail:
+    name: Button_thumbnail
+  Button_search:
+    name: Button_search
+  PImageListView_4:
+    accessible_id: PImageListView_4
+  pageEdit:
+    name: pageEdit
+  thumbnailPreBtn:
+    accessible_id: thumbnailPreBtn
+  thumbnailNextBtn:
+    accessible_id: thumbnailNextBtn
+  Label_TotalPage:
+    name: Label_TotalPage
+  CurrentPage:
+    name: CurrentPage
+  PlayBtn:
+    accessible_id: PlayBtn
+  PreBtn:
+    accessible_id: PreBtn
+  NextBtn:
+    accessible_id: NextBtn
+  DTabBarAddButton:
+    name: DTabBarAddButton
+  scaleEdit_P:
+    accessible_id: scaleEdit_P
+  editArrowBtn:
+    accessible_id: editArrowBtn
+  DLineEditChildLineEdit:
+    name: DLineEditChildLineEdit
+  DSearchEditIconButton:
+    name: DSearchEditIconButton
+  SP_ArrowDownBtn:
+    accessible_id: SP_ArrowDownBtn
+  SP_ArrowUpBtn:
+    accessible_id: SP_ArrowUpBtn
+  DLineEditClearButton:
+    name: DLineEditClearButton
+  findSearchEdit_P:
+    accessible_id: findSearchEdit_P
+  PImageListView_3:
+    accessible_id: PImageListView_3
+  ensureBtn:
+    name: ensureBtn
+    role: push button
+    accessible_id: ensureBtn
+  Password:
+    name: Password
+    role: text
+    accessible_id: Password
+  JumpBtn:
+    name: JumpBtn
+    role: push button
+    accessible_id: JumpBtn
+  CloseBtn:
+    name: CloseBtn
+    role: button
+    accessible_id: CloseBtn

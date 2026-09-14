@@ -1,0 +1,69 @@
+name: sidebar_thumbnails_suite
+app: deepin-reader
+module: sidebar_thumbnails
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_sidebar_thumbnails_s1
+  name: 左侧栏缩略图视图分页导航
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_thumbnail
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PImageListView_4
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: pageEdit
+  - step_type: action
+    action: keyboard_type_text
+    text: '1'
+  - step_type: action
+    action: keyboard_press
+    key: return
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: thumbnailPreBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: thumbnailNextBtn
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_4
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: pageEdit
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: thumbnailPreBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: thumbnailNextBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Label_TotalPage
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: CurrentPage
+teardown:
+- action: session_stop

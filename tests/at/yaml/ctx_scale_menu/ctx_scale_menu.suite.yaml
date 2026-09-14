@@ -1,0 +1,53 @@
+name: ctx_scale_menu_suite
+app: deepin-reader
+module: ctx_scale_menu
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_ctx_scale_menu_s1
+  name: 右键缩放区域菜单所有菜单项
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Form_CentralDocPage
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 双页显示
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 默认大小
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 适合页面
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 适应高度
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Form_scaleEdit_P
+    items:
+    - 适应宽度
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Form_CentralDocPage
+teardown:
+- action: session_stop

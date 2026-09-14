@@ -1,0 +1,73 @@
+name: titlebar_search_suite
+app: deepin-reader
+module: titlebar_search
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_titlebar_search_s1
+  name: 标题栏搜索框输入搜索清除和搜索结果导航
+  description: ''
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    items:
+    - 搜索
+  - step_type: action
+    action: keyboard_type_text
+    text: test
+  - step_type: action
+    action: keyboard_press
+    key: return
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DLineEditChildLineEdit
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DSearchEditIconButton
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: SP_ArrowDownBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: SP_ArrowUpBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DLineEditClearButton
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: DLineEditChildLineEdit
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: DLineEditClearButton
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: DSearchEditIconButton
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: findSearchEdit_P
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: SP_ArrowUpBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: SP_ArrowDownBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_3
+teardown:
+- action: session_stop

@@ -1,0 +1,63 @@
+name: sidebar_tabs_suite
+app: deepin-reader
+module: sidebar_tabs
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_sidebar_tabs_s1
+  name: 左侧栏按钮切换缩略图目录书签注释搜索
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_thumbnail
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_catalog
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_bookmark
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_annotation
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_search
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: Thumbnails
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_thumbnail
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_catalog
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_bookmark
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_annotation
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_search
+teardown:
+- action: session_stop

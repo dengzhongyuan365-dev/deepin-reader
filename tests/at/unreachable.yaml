@@ -1,0 +1,9 @@
+unreachable:
+  - name: ensureBtn
+    reason: EncryptionPage only appears with encrypted PDFs; no encrypted test file available
+  - name: Password
+    reason: EncryptionPage only appears with encrypted PDFs; no encrypted test file available
+  - name: JumpBtn
+    reason: RestoreTipWidget only appears in specific restore scenarios not triggerable in normal test flow
+  - name: CloseBtn
+    reason: RestoreTipWidget only appears in specific restore scenarios not triggerable in normal test flow

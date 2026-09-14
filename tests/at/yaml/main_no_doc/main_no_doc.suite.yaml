@@ -1,0 +1,25 @@
+name: main_no_doc_suite
+app: deepin-reader
+module: main_no_doc
+setup:
+- action: session_start
+  command: deepin-reader
+  wait: 3.0
+suites:
+- id: suite_main_no_doc_s1
+  name: 主界面无文档打开选择文件按钮
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_SelectFile
+  - step_type: action
+    action: file_dialog_cancel
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_SelectFile
+teardown:
+- action: session_stop

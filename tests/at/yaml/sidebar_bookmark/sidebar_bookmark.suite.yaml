@@ -1,0 +1,43 @@
+name: sidebar_bookmark_suite
+app: deepin-reader
+module: sidebar_bookmark
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_sidebar_bookmark_s1
+  name: 左侧栏书签视图添加书签和右键菜单
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: Thumbnails
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_bookmark
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_BookmarkAdd
+  - step_type: action
+    action: mouse_right_click
+    selector:
+      accessible_id: PImageListView
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PImageListView
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: Button_BookmarkAdd
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: PBookMarkMenu
+teardown:
+- action: session_stop

@@ -1,0 +1,23 @@
+name: tab_bar_suite
+app: deepin-reader
+module: tab_bar
+setup:
+- action: session_start
+  command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
+  wait: 3.0
+suites:
+- id: suite_tab_bar_s1
+  name: 顶部标签页栏新建标签页按钮
+  description: ''
+  steps:
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DTabBarAddButton
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: DTabBarAddButton
+teardown:
+- action: session_stop
