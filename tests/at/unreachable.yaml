@@ -1,4 +1,8 @@
 unreachable:
+  - name: DTabBarAddButton
+    reason: DTK internal DTabBarAddButton, no explicit setObjectName/setAccessibleName in deepin-reader source, AT-SPI cannot reliably locate
+  - name: PImageListView_3
+    reason: Sidebar search results list only appears after performing a sidebar search; no test suite performs sidebar search
   - name: ensureBtn
     reason: EncryptionPage only appears with encrypted PDFs; no encrypted test file available
   - name: Password

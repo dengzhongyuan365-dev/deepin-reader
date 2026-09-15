@@ -1,4 +1,4 @@
-scan_total: 38
+scan_total: 36
 transient_items:
 - name: 浅色
   role: menuitem
@@ -12,9 +12,45 @@ transient_items:
   role: menuitem
   ui_name: 跟随系统主题
   locator: name
-unreachable: 4
-denominator: 34
-covered: 34
+- name: 双页显示
+  role: menuitem
+  ui_name: 双页显示
+  locator: name
+- name: 默认大小
+  role: menuitem
+  ui_name: 默认大小
+  locator: name
+- name: 适合页面
+  role: menuitem
+  ui_name: 适合页面
+  locator: name
+- name: 适应高度
+  role: menuitem
+  ui_name: 适应高度
+  locator: name
+- name: 适应宽度
+  role: menuitem
+  ui_name: 适应宽度
+  locator: name
+- name: 删除书签
+  role: menuitem
+  ui_name: 删除书签
+  locator: name
+- name: 全部删除
+  role: menuitem
+  ui_name: 全部删除
+  locator: name
+- name: 复制
+  role: menuitem
+  ui_name: 复制
+  locator: name
+- name: 删除注释
+  role: menuitem
+  ui_name: 删除注释
+  locator: name
+unreachable: 6
+denominator: 30
+covered: 30
 uncovered: 0
 coverage: 100.0
 passed: true

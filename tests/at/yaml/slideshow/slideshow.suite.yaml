@@ -4,30 +4,39 @@ module: slideshow
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_slideshow_s1
   name: 幻灯片放映播放上一页下一页
-  description: ''
+  description: 进入幻灯片放映后验证播放、上一页、下一页控件，退出后验证主界面恢复
   steps:
   - step_type: action
-    action: mouse_click
-    selector:
-      name: Form_CentralDocPage
-  - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 幻灯片放映
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
       accessible_id: PlayBtn
   - step_type: action
     action: mouse_click
     selector:
+      accessible_id: PlayBtn
+  - step_type: action
+    action: assert_element
+    selector:
       accessible_id: PreBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PreBtn
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: NextBtn
   - step_type: action
     action: mouse_click
     selector:
@@ -39,14 +48,6 @@ suites:
   - step_type: assert
     action: assert_element
     selector:
-      accessible_id: PlayBtn
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: PreBtn
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: NextBtn
+      name: Form_CentralDocPage
 teardown:
 - action: session_stop

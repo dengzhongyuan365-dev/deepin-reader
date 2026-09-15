@@ -4,11 +4,13 @@ module: main_no_doc
 setup:
 - action: session_start
   command: deepin-reader
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Button_SelectFile
 suites:
 - id: suite_main_no_doc_s1
   name: 主界面无文档打开选择文件按钮
-  description: ''
+  description: 无文件打开时点击选择文件按钮打开文件对话框，取消后验证主界面恢复
   steps:
   - step_type: action
     action: mouse_click

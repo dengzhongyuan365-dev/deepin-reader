@@ -4,20 +4,14 @@ module: tab_bar
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_tab_bar_s1
   name: 顶部标签页栏新建标签页按钮
-  description: ''
-  steps:
-  - step_type: action
-    action: mouse_click
-    selector:
-      name: DTabBarAddButton
-  assert_steps:
-  - step_type: assert
-    action: assert_element
-    selector:
-      name: DTabBarAddButton
+  description: DTabBarAddButton 为 DTK 内部按钮，deepin-reader 代码未设置 setObjectName/setAccessibleName，AT-SPI 无法可靠定位
+  status: unsupported
+  reason: DTabBarAddButton 是 DTK 内部控件，deepin-reader 代码未设置 setObjectName/setAccessibleName，AT-SPI 无法可靠定位
 teardown:
 - action: session_stop

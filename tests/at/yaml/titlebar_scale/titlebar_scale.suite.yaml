@@ -4,11 +4,13 @@ module: titlebar_scale
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_titlebar_scale_s1
   name: 标题栏缩放比例输入和箭头按钮
-  description: ''
+  description: 在缩放比例输入框输入 100 并回车，点击箭头按钮弹出缩放菜单后关闭
   steps:
   - step_type: action
     action: mouse_click
@@ -24,6 +26,9 @@ suites:
     action: mouse_click
     selector:
       accessible_id: editArrowBtn
+  - step_type: action
+    action: keyboard_press
+    key: escape
   assert_steps:
   - step_type: assert
     action: assert_element

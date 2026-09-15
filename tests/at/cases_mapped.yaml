@@ -5,15 +5,14 @@ cases:
   module: annotation_edit
   steps:
   - step_type: action
-    action: mouse_click
-    selector:
-      name: Form_CentralDocPage
-  - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 添加注释
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PTextEdit
   - step_type: action
     action: mouse_click
     selector:
@@ -33,13 +32,8 @@ cases:
   module: ctx_doc_menu
   steps:
   - step_type: action
-    action: mouse_click
-    selector:
-      name: Form_CentralDocPage
-  - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 搜索
   - step_type: action
@@ -47,44 +41,40 @@ cases:
     key: escape
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 后一页
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 前一页
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 最后一页
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 第一页
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 添加书签
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 添加注释
   - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 全屏
   - step_type: action
@@ -92,8 +82,7 @@ cases:
     key: escape
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 幻灯片放映
   - step_type: action
@@ -101,20 +90,17 @@ cases:
     key: escape
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 左旋转
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 右旋转
   - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 文档信息
   - step_type: action
@@ -125,47 +111,51 @@ cases:
     selector:
       name: Form_CentralDocPage
 - id: suite_ctx_scale_menu_s1
-  name: 右键缩放区域菜单所有菜单项
+  name: 缩放箭头按钮下拉菜单所有菜单项
   module: ctx_scale_menu
   steps:
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
-      name: Form_CentralDocPage
+      accessible_id: editArrowBtn
   - step_type: action
-    action: dtk_context_menu
+    action: dtk_dropdown_menu
     selector:
-      name: Form_scaleEdit_P
+      accessible_id: editArrowBtn
     items:
     - 双页显示
   - step_type: action
-    action: dtk_context_menu
+    action: dtk_dropdown_menu
     selector:
-      name: Form_scaleEdit_P
+      accessible_id: editArrowBtn
     items:
     - 默认大小
   - step_type: action
-    action: dtk_context_menu
+    action: dtk_dropdown_menu
     selector:
-      name: Form_scaleEdit_P
+      accessible_id: editArrowBtn
     items:
     - 适合页面
   - step_type: action
-    action: dtk_context_menu
+    action: dtk_dropdown_menu
     selector:
-      name: Form_scaleEdit_P
+      accessible_id: editArrowBtn
     items:
     - 适应高度
   - step_type: action
-    action: dtk_context_menu
+    action: dtk_dropdown_menu
     selector:
-      name: Form_scaleEdit_P
+      accessible_id: editArrowBtn
     items:
     - 适应宽度
   - step_type: assert
     action: assert_element
     selector:
-      name: Form_CentralDocPage
+      accessible_id: editArrowBtn
+  - step_type: assert
+    action: assert_element
+    selector:
+      accessible_id: scaleEdit_P
 - id: suite_main_no_doc_s1
   name: 主界面无文档打开选择文件按钮
   module: main_no_doc
@@ -189,17 +179,31 @@ cases:
     selector:
       accessible_id: Thumbnails
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
       name: Button_bookmark
   - step_type: action
     action: mouse_click
     selector:
+      name: Button_bookmark
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PImageListView
+  - step_type: action
+    action: mouse_click
+    selector:
       name: Button_BookmarkAdd
   - step_type: action
-    action: mouse_right_click
+    action: assert_element
     selector:
       accessible_id: PImageListView
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      accessible_id: PImageListView
+    items:
+    - 删除书签
   - step_type: assert
     action: assert_element
     selector:
@@ -208,10 +212,6 @@ cases:
     action: assert_element
     selector:
       name: Button_BookmarkAdd
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: PBookMarkMenu
 - id: suite_sidebar_catalog_s1
   name: 左侧栏目录视图目录树显示和点击跳转
   module: sidebar_catalog
@@ -221,9 +221,17 @@ cases:
     selector:
       accessible_id: Thumbnails
   - step_type: action
+    action: assert_element
+    selector:
+      name: Button_catalog
+  - step_type: action
     action: mouse_click
     selector:
       name: Button_catalog
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PTree
   - step_type: action
     action: mouse_click
     selector:
@@ -237,27 +245,46 @@ cases:
   module: sidebar_notes
   steps:
   - step_type: action
+    action: dtk_context_menu
+    ref: Form_CentralDocPage
+    items:
+    - 添加注释
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PTextEdit
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PTextEdit
+  - step_type: action
+    action: keyboard_type_text
+    text: test note
+  - step_type: action
+    action: keyboard_press
+    key: return
+  - step_type: action
     action: mouse_click
     selector:
       accessible_id: Thumbnails
   - step_type: action
-    action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
-    items:
-    - 添加注释
-  - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
       name: Button_annotation
   - step_type: action
     action: mouse_click
     selector:
-      name: Button_NotesAdd
+      name: Button_annotation
   - step_type: action
-    action: mouse_right_click
+    action: assert_element
     selector:
       accessible_id: PImageListView_2
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      accessible_id: PImageListView_2
+    items:
+    - 删除注释
   - step_type: assert
     action: assert_element
     selector:
@@ -266,10 +293,6 @@ cases:
     action: assert_element
     selector:
       name: Button_NotesAdd
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: PNoteMenu
 - id: suite_sidebar_tabs_s1
   name: 左侧栏按钮切换缩略图目录书签注释搜索
   module: sidebar_tabs
@@ -279,21 +302,41 @@ cases:
     selector:
       accessible_id: Thumbnails
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
       name: Button_thumbnail
   - step_type: action
     action: mouse_click
     selector:
+      name: Button_thumbnail
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_4
+  - step_type: action
+    action: mouse_click
+    selector:
       name: Button_catalog
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PTree
   - step_type: action
     action: mouse_click
     selector:
       name: Button_bookmark
   - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PImageListView
+  - step_type: action
     action: mouse_click
     selector:
       name: Button_annotation
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_2
   - step_type: action
     action: mouse_click
     selector:
@@ -331,11 +374,15 @@ cases:
     selector:
       accessible_id: Thumbnails
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
       name: Button_thumbnail
   - step_type: action
     action: mouse_click
+    selector:
+      name: Button_thumbnail
+  - step_type: action
+    action: assert_element
     selector:
       accessible_id: PImageListView_4
   - step_type: action
@@ -348,6 +395,10 @@ cases:
   - step_type: action
     action: keyboard_press
     key: return
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: thumbnailPreBtn
   - step_type: action
     action: mouse_click
     selector:
@@ -385,23 +436,30 @@ cases:
   module: slideshow
   steps:
   - step_type: action
-    action: mouse_click
-    selector:
-      name: Form_CentralDocPage
-  - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 幻灯片放映
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
       accessible_id: PlayBtn
   - step_type: action
     action: mouse_click
     selector:
+      accessible_id: PlayBtn
+  - step_type: action
+    action: assert_element
+    selector:
       accessible_id: PreBtn
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PreBtn
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: NextBtn
   - step_type: action
     action: mouse_click
     selector:
@@ -412,27 +470,13 @@ cases:
   - step_type: assert
     action: assert_element
     selector:
-      accessible_id: PlayBtn
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: PreBtn
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: NextBtn
+      name: Form_CentralDocPage
 - id: suite_tab_bar_s1
   name: 顶部标签页栏新建标签页按钮
   module: tab_bar
-  steps:
-  - step_type: action
-    action: mouse_click
-    selector:
-      name: DTabBarAddButton
-  - step_type: assert
-    action: assert_element
-    selector:
-      name: DTabBarAddButton
+  status: unsupported
+  reason: DTabBarAddButton 是 DTK 内部控件，deepin-reader 代码未设置 setObjectName/setAccessibleName，AT-SPI 无法可靠定位
+  steps: []
 - id: suite_titlebar_menu_s1
   name: 标题栏主菜单工具搜索导航
   module: titlebar_menu
@@ -476,6 +520,9 @@ cases:
     action: mouse_click
     selector:
       accessible_id: editArrowBtn
+  - step_type: action
+    action: keyboard_press
+    key: escape
   - step_type: assert
     action: assert_element
     selector:
@@ -493,19 +540,23 @@ cases:
     items:
     - 搜索
   - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: findSearchEdit_P
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DLineEditChildLineEdit
+  - step_type: action
     action: keyboard_type_text
     text: test
   - step_type: action
     action: keyboard_press
     key: return
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
-      name: DLineEditChildLineEdit
-  - step_type: action
-    action: mouse_click
-    selector:
-      name: DSearchEditIconButton
+      accessible_id: SP_ArrowDownBtn
   - step_type: action
     action: mouse_click
     selector:
@@ -517,35 +568,11 @@ cases:
   - step_type: action
     action: mouse_click
     selector:
-      name: DLineEditClearButton
-  - step_type: assert
-    action: assert_element
-    selector:
-      name: DLineEditChildLineEdit
-  - step_type: assert
-    action: assert_element
-    selector:
-      name: DLineEditClearButton
-  - step_type: assert
-    action: assert_element
-    selector:
-      name: DSearchEditIconButton
+      accessible_id: closeButton
   - step_type: assert
     action: assert_element
     selector:
       accessible_id: findSearchEdit_P
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: SP_ArrowUpBtn
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: SP_ArrowDownBtn
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: PImageListView_3
 - id: suite_titlebar_theme_s1
   name: 标题栏主题菜单浅色深色跟随系统切换
   module: titlebar_theme

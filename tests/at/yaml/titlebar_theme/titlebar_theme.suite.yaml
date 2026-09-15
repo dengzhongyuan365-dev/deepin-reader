@@ -4,11 +4,13 @@ module: titlebar_theme
 setup:
 - action: session_start
   command: deepin-reader
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Button_SelectFile
 suites:
 - id: suite_titlebar_theme_s1
   name: 标题栏主题菜单浅色深色跟随系统切换
-  description: ''
+  description: 无文件打开时通过标题栏主菜单切换主题，验证主界面始终可用
   steps:
   - step_type: action
     action: dtk_main_menu

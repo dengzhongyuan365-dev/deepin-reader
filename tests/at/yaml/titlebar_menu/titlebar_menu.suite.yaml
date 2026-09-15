@@ -4,11 +4,13 @@ module: titlebar_menu
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_titlebar_menu_s1
   name: 标题栏主菜单工具搜索导航
-  description: ''
+  description: 通过标题栏主菜单切换工具并打开搜索，验证文档区域始终可用
   steps:
   - step_type: action
     action: dtk_main_menu

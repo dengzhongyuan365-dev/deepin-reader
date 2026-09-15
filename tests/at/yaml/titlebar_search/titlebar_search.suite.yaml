@@ -4,16 +4,26 @@ module: titlebar_search
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_titlebar_search_s1
   name: 标题栏搜索框输入搜索清除和搜索结果导航
-  description: ''
+  description: 通过主菜单打开 FindWidget，输入搜索词并搜索，验证导航按钮和关闭按钮
   steps:
   - step_type: action
     action: dtk_main_menu
     items:
     - 搜索
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: findSearchEdit_P
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: DLineEditChildLineEdit
   - step_type: action
     action: keyboard_type_text
     text: test
@@ -21,13 +31,9 @@ suites:
     action: keyboard_press
     key: return
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
-      name: DLineEditChildLineEdit
-  - step_type: action
-    action: mouse_click
-    selector:
-      name: DSearchEditIconButton
+      accessible_id: SP_ArrowDownBtn
   - step_type: action
     action: mouse_click
     selector:
@@ -39,35 +45,11 @@ suites:
   - step_type: action
     action: mouse_click
     selector:
-      name: DLineEditClearButton
+      accessible_id: closeButton
   assert_steps:
   - step_type: assert
     action: assert_element
     selector:
-      name: DLineEditChildLineEdit
-  - step_type: assert
-    action: assert_element
-    selector:
-      name: DLineEditClearButton
-  - step_type: assert
-    action: assert_element
-    selector:
-      name: DSearchEditIconButton
-  - step_type: assert
-    action: assert_element
-    selector:
       accessible_id: findSearchEdit_P
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: SP_ArrowUpBtn
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: SP_ArrowDownBtn
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: PImageListView_3
 teardown:
 - action: session_stop

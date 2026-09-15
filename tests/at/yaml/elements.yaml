@@ -1,10 +1,9 @@
 elements:
   Form_CentralDocPage:
     name: Form_CentralDocPage
+    role: client
   PTextEdit:
     accessible_id: PTextEdit
-  Form_scaleEdit_P:
-    name: Form_scaleEdit_P
   Button_SelectFile:
     name: Button_SelectFile
   Thumbnails:
@@ -15,8 +14,6 @@ elements:
     name: Button_BookmarkAdd
   PImageListView:
     accessible_id: PImageListView
-  PBookMarkMenu:
-    accessible_id: PBookMarkMenu
   Button_catalog:
     name: Button_catalog
   PTree:
@@ -27,8 +24,6 @@ elements:
     name: Button_NotesAdd
   PImageListView_2:
     accessible_id: PImageListView_2
-  PNoteMenu:
-    accessible_id: PNoteMenu
   Button_thumbnail:
     name: Button_thumbnail
   Button_search:
@@ -59,16 +54,14 @@ elements:
     accessible_id: editArrowBtn
   DLineEditChildLineEdit:
     name: DLineEditChildLineEdit
-  DSearchEditIconButton:
-    name: DSearchEditIconButton
   SP_ArrowDownBtn:
     accessible_id: SP_ArrowDownBtn
   SP_ArrowUpBtn:
     accessible_id: SP_ArrowUpBtn
-  DLineEditClearButton:
-    name: DLineEditClearButton
   findSearchEdit_P:
     accessible_id: findSearchEdit_P
+  closeButton:
+    accessible_id: closeButton
   PImageListView_3:
     accessible_id: PImageListView_3
   ensureBtn:

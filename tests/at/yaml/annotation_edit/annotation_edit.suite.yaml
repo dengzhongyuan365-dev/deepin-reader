@@ -4,22 +4,23 @@ module: annotation_edit
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_annotation_edit_s1
   name: 注释文本编辑框输入文本
-  description: ''
+  description: 右键文档添加注释，等待注释编辑框就绪后输入文本并确认
   steps:
   - step_type: action
-    action: mouse_click
-    selector:
-      name: Form_CentralDocPage
-  - step_type: action
     action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
+    ref: Form_CentralDocPage
     items:
     - 添加注释
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PTextEdit
   - step_type: action
     action: mouse_click
     selector:

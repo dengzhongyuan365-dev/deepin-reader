@@ -1,7 +1,12 @@
 version: '1.0'
 source: at-case-authoring:element-map.yaml
-scan_total: 38
+scan_total: 36
 elements:
+  Form_CentralDocPage:
+    role: client
+    ui_name: 文档显示区域
+    desc: 中央文档显示页面，右键弹出 BrowserMenu
+    locator: name
   Button_SelectFile:
     role: button
     ui_name: 选择文件按钮
@@ -62,11 +67,6 @@ elements:
     ui_name: 添加书签按钮
     desc: 书签视图中添加书签
     locator: name
-  PBookMarkMenu:
-    role: menu
-    ui_name: 书签右键菜单
-    desc: SideBarImageListView 中的书签右键菜单
-    locator: accessible_id
   PImageListView_2:
     role: list
     ui_name: 注释列表
@@ -77,11 +77,6 @@ elements:
     ui_name: 添加注释按钮
     desc: 注释视图中添加注释
     locator: name
-  PNoteMenu:
-    role: menu
-    ui_name: 注释右键菜单
-    desc: SideBarImageListView 中的注释右键菜单
-    locator: accessible_id
   PImageListView_3:
     role: list
     ui_name: 搜索结果列表
@@ -90,17 +85,7 @@ elements:
   DLineEditChildLineEdit:
     role: text
     ui_name: 搜索输入框
-    desc: 标题栏搜索框文本输入
-    locator: name
-  DLineEditClearButton:
-    role: button
-    ui_name: 清除搜索按钮
-    desc: 标题栏搜索框清除按钮
-    locator: name
-  DSearchEditIconButton:
-    role: button
-    ui_name: 搜索图标按钮
-    desc: 标题栏搜索框图标按钮
+    desc: FindWidget 搜索框内嵌文本输入
     locator: name
   findSearchEdit_P:
     role: text
@@ -117,6 +102,11 @@ elements:
     ui_name: 下一个搜索结果按钮
     desc: FindWidget 下一个搜索结果
     locator: accessible_id
+  closeButton:
+    role: button
+    ui_name: 关闭搜索按钮
+    desc: FindWidget 关闭按钮
+    locator: accessible_id
   scaleEdit_P:
     role: text
     ui_name: 缩放比例输入框
@@ -125,7 +115,7 @@ elements:
   editArrowBtn:
     role: button
     ui_name: 缩放箭头按钮
-    desc: ScaleWidget 缩放箭头按钮
+    desc: ScaleWidget 缩放箭头按钮，点击弹出缩放菜单
     locator: accessible_id
   thumbnailPreBtn:
     role: button
@@ -205,6 +195,42 @@ transient_items:
   role: menuitem
   ui_name: 跟随系统主题
   desc: 标题栏主题菜单-跟随系统
+- name: 双页显示
+  role: menuitem
+  ui_name: 双页显示
+  desc: 缩放菜单-双页显示
+- name: 默认大小
+  role: menuitem
+  ui_name: 默认大小
+  desc: 缩放菜单-1:1大小
+- name: 适合页面
+  role: menuitem
+  ui_name: 适合页面
+  desc: 缩放菜单-适合页面
+- name: 适应高度
+  role: menuitem
+  ui_name: 适应高度
+  desc: 缩放菜单-适应高度
+- name: 适应宽度
+  role: menuitem
+  ui_name: 适应宽度
+  desc: 缩放菜单-适应宽度
+- name: 删除书签
+  role: menuitem
+  ui_name: 删除书签
+  desc: 书签右键菜单-删除书签
+- name: 全部删除
+  role: menuitem
+  ui_name: 全部删除
+  desc: 书签/注释右键菜单-全部删除
+- name: 复制
+  role: menuitem
+  ui_name: 复制
+  desc: 注释右键菜单-复制
+- name: 删除注释
+  role: menuitem
+  ui_name: 删除注释
+  desc: 注释右键菜单-删除注释
 unresolved:
 - name: 标题栏菜单
   role: menu

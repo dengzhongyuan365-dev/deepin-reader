@@ -4,20 +4,30 @@ module: sidebar_catalog
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_sidebar_catalog_s1
   name: 左侧栏目录视图目录树显示和点击跳转
-  description: ''
+  description: 展开侧边栏并切换到目录视图，验证目录树控件
   steps:
   - step_type: action
     action: mouse_click
     selector:
       accessible_id: Thumbnails
   - step_type: action
+    action: assert_element
+    selector:
+      name: Button_catalog
+  - step_type: action
     action: mouse_click
     selector:
       name: Button_catalog
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PTree
   - step_type: action
     action: mouse_click
     selector:

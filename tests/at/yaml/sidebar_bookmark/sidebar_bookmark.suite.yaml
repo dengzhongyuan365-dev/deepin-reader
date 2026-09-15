@@ -4,28 +4,44 @@ module: sidebar_bookmark
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_sidebar_bookmark_s1
   name: 左侧栏书签视图添加书签和右键菜单
-  description: ''
+  description: 展开侧边栏并切换到书签视图，添加书签后右键列表项验证菜单项
   steps:
   - step_type: action
     action: mouse_click
     selector:
       accessible_id: Thumbnails
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
       name: Button_bookmark
   - step_type: action
     action: mouse_click
     selector:
-      name: Button_BookmarkAdd
+      name: Button_bookmark
   - step_type: action
-    action: mouse_right_click
+    action: assert_element
     selector:
       accessible_id: PImageListView
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: Button_BookmarkAdd
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PImageListView
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      accessible_id: PImageListView
+    items:
+    - 删除书签
   assert_steps:
   - step_type: assert
     action: assert_element
@@ -35,9 +51,5 @@ suites:
     action: assert_element
     selector:
       name: Button_BookmarkAdd
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: PBookMarkMenu
 teardown:
 - action: session_stop

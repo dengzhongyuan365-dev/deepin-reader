@@ -4,34 +4,55 @@ module: sidebar_notes
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_sidebar_notes_s1
   name: 左侧栏注释视图添加注释和右键菜单
-  description: ''
+  description: 通过右键文档添加注释并输入文本，切换到注释视图后右键列表项验证菜单项
   steps:
+  - step_type: action
+    action: dtk_context_menu
+    ref: Form_CentralDocPage
+    items:
+    - 添加注释
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PTextEdit
+  - step_type: action
+    action: mouse_click
+    selector:
+      accessible_id: PTextEdit
+  - step_type: action
+    action: keyboard_type_text
+    text: test note
+  - step_type: action
+    action: keyboard_press
+    key: return
   - step_type: action
     action: mouse_click
     selector:
       accessible_id: Thumbnails
   - step_type: action
-    action: dtk_context_menu
-    selector:
-      name: Form_CentralDocPage
-    items:
-    - 添加注释
-  - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
       name: Button_annotation
   - step_type: action
     action: mouse_click
     selector:
-      name: Button_NotesAdd
+      name: Button_annotation
   - step_type: action
-    action: mouse_right_click
+    action: assert_element
     selector:
       accessible_id: PImageListView_2
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      accessible_id: PImageListView_2
+    items:
+    - 删除注释
   assert_steps:
   - step_type: assert
     action: assert_element
@@ -41,9 +62,5 @@ suites:
     action: assert_element
     selector:
       name: Button_NotesAdd
-  - step_type: assert
-    action: assert_element
-    selector:
-      accessible_id: PNoteMenu
 teardown:
 - action: session_stop

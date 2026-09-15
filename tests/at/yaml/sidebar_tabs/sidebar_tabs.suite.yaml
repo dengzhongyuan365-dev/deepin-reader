@@ -4,32 +4,54 @@ module: sidebar_tabs
 setup:
 - action: session_start
   command: deepin-reader ${TEST_FILES_DIR}/normal.pdf
-  wait: 3.0
+- action: assert_element
+  selector:
+    name: Form_CentralDocPage
 suites:
 - id: suite_sidebar_tabs_s1
   name: 左侧栏按钮切换缩略图目录书签注释搜索
-  description: ''
+  description: 展开侧边栏，依次切换各视图按钮，每次切换后等待目标控件就绪
   steps:
   - step_type: action
     action: mouse_click
     selector:
       accessible_id: Thumbnails
   - step_type: action
-    action: mouse_click
+    action: assert_element
     selector:
       name: Button_thumbnail
   - step_type: action
     action: mouse_click
     selector:
+      name: Button_thumbnail
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_4
+  - step_type: action
+    action: mouse_click
+    selector:
       name: Button_catalog
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PTree
   - step_type: action
     action: mouse_click
     selector:
       name: Button_bookmark
   - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PImageListView
+  - step_type: action
     action: mouse_click
     selector:
       name: Button_annotation
+  - step_type: action
+    action: assert_element
+    selector:
+      accessible_id: PImageListView_2
   - step_type: action
     action: mouse_click
     selector:
